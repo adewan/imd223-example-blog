@@ -1,0 +1,13 @@
+<h2><%= @tag.tagname %></h2>
+
+<% if @tag.posts.empty? %>
+
+<p>No posts for this tag! <%=link_to 'add one', new_post_path %></p>
+
+<% else %>
+
+	<% @tag.posts.each do |post| %>
+		<h3><%=post.title %></h3>
+	<% end %>
+
+<% end %>

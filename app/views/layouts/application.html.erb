@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @title || 'Myblog' %></title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <!-- <link type="text/css" rel="stylesheet" href="/test_style.css" /> -->
+</head>
+<body class="<%= controller_name.singularize %> <%=action_name%>">
+<h1>MY GREATEST BLOG EVERS</h1>
+<% if flash[:notice] %>
+	<p><%= flash[:notice] %></p>
+<% end %>
+
+<div>
+<% if current_user %>
+	Hi <%=current_user.email %>. <%=link_to "Log out", destroy_user_session_path, :method => :delete %>
+<% else %>
+	Not logged in. <%=link_to "Log in", new_user_session_path %>
+<% end %>
+</div>
+
+<%= yield %>
+
+</body>
+</html>
